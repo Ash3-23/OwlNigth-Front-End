@@ -13,7 +13,7 @@ const ListCards = ({ isProManager, customStyle }) => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('http://localhost:4000/locals', "https://owlnight-backend.onrender.com");
+      const response = await axios.get("https://owlnight-backend.onrender.com");
       setLocals(response.data);
     } catch (error) {
       console.error('Error fetching data:', error);
