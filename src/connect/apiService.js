@@ -1,13 +1,13 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL:  "https://owlnight-backend.onrender.com"
+  baseURL: "https://owlnight-backend.onrender.com",
 });
 
 const apiServiceInstance = {
 
   //ALLNIGHT
-  getAllPlans: async () => {
+  getAllLocals: async () => {
     try {
       const response = await instance.get('/locals')
       return response.data
