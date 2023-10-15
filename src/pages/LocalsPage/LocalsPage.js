@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./LocalsPage.css";
 import deals from "./imgs/deals.jpg"
 import { Link } from "react-router-dom";

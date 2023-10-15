@@ -38,12 +38,10 @@ const Profile = () => {
         try {
             if (selectedAvatar) {
                 const response = await apiServiceInstance.updateAvatar(selectedAvatar, dataUser._id);
-                if (response && response.data && response.data.avatarUrl) {
-                    setAvatarImg(response.data.avatarUrl);
+                if (response && response.data && response.data.avatarImg) {
+                    setAvatarImg(response.data.avatarImg);
                     setEditAvatar(false);
                     console.log('Imagen de avatar actualizada con éxito');
-                } else {
-                    console.error('La respuesta del servidor no contiene la URL del avatar.');
                 }
             } else {
                 console.error('Debes seleccionar una imagen de avatar.');

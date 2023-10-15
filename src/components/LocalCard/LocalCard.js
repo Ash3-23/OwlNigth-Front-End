@@ -3,33 +3,33 @@ import "./LocalCard.css";
 import apiServiceInstance from "../../connect/apiService";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../connect/AuthContext/AuthContext";
-import { useDateContext } from "../DateContext/DateContext";
+// import { useDateContext } from "../DateContext/DateContext";
 
 
 const LocalCard = ({ localInfo }) => {
-  const { token, setLocalData, isProManager } = useAuth();
-  const { availableDates } = useDateContext();
+  const { token, isProManager } = useAuth();
+  // const { availableDates } = useDateContext();
   const [isEditing, setIsEditing] = useState(false);
   const [editedFields, setEditedFields] = useState({ ...localInfo });
   // const [newLocalInfo, setNewLocalInfo] = useState(localInfo);
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false); // Nuevo estado
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const handleReservation = async () => {
-    try {
-      const token = localStorage.getItem('token');
-      if (!token) {
-        localStorage.setItem("pendingLocalReservation", JSON.stringify(localInfo));
-        navigate("/login&register");
-      } else {
-        const response = await apiServiceInstance.getLocalById(localInfo._id);
-        console.log(response, "este es el Local");
-        setLocalData(response);
-      }
-    } catch (error) {
-      console.error('Error al crear reserva:', error);
-    }
-  };
+  // const handleReservation = async () => {
+  //   try {
+  //     const token = localStorage.getItem('token');
+  //     if (!token) {
+  //       localStorage.setItem("pendingLocalReservation", JSON.stringify(localInfo));
+  //       navigate("/login&register");
+  //     } else {
+  //       const response = await apiServiceInstance.getLocalById(localInfo._id);
+  //       console.log(response, "este es el Local");
+  //       setLocalData(response);
+  //     }
+  //   } catch (error) {
+  //     console.error('Error al crear reserva:', error);
+  //   }
+  // };
 
   const handleDeleteLocal = async (localById) => {
     if (!showDeleteConfirmation) {

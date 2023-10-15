@@ -5,12 +5,12 @@ import './BookingPage.css';
 import apiServiceInstance from '../../connect/apiService';
 // import { useAuth } from '../../connect/AuthContext/AuthContext';
 import { useDateContext } from "../../components/DateContext/DateContext";
-
+//necesito hacer cambiooosss
 
 const BookingPage = ({ localInfo }) => {
 
   const { localId } = useParams();
-  const [selectedDate, setSelectedDate] = useState('');
+  // const [selectedDate, setSelectedDate] = useState('');
   const { availableDates, setDates } = useDateContext();
   const [localData, setLocalData] = useState(null);
   const [isBookingProcessing, setIsBookingProcessing] = useState(false);
@@ -42,11 +42,11 @@ const BookingPage = ({ localInfo }) => {
       const userId = userData._id;
       const localDate = availableDates;
       const dates = localDate ? localDate : [];
-      const bookingData = {
-        localId: localId,
-        userId: userId,
-        dates: dates,
-      };
+      // const bookingData = {
+      //   localId: localId,
+      //   userId: userId,
+      //   dates: dates,
+      // };
       const response = await apiServiceInstance.createBooking(userId, localId, dates, token);
       console.log('Respuesta de createBooking:', response);
       setTimeout(() => {
@@ -59,10 +59,10 @@ const BookingPage = ({ localInfo }) => {
     }
   };
 
-  const handleDateChange = async (date) => {
-    const dates = await apiServiceInstance.getLocalById(localData.availableDates)
-    setSelectedDate(dates);
-  };
+  // const handleDateChange = async (date) => {
+  //   const dates = await apiServiceInstance.getLocalById(localData.availableDates)
+  //   setSelectedDate(dates);
+  // };
 
   return (
     <>
