@@ -13,7 +13,7 @@ const ListCards = ({ isProManager, customStyle }) => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('http://localhost:4000/locals');
+      const response = await axios.get(process.env.REACT_APP_SERVER_URL + '/locals');
       setLocals(response.data);
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -27,7 +27,7 @@ const ListCards = ({ isProManager, customStyle }) => {
           <div className="local-card-list" style={customStyle}>
             {locals && locals.length > 0 ? (
               locals.map((local) => (
-                <LocalCard key={local.id} localInfo={local} />
+                <LocalCard key={local._id} localInfo={local} />
               ))
             ) : (
               <p>No hay locales disponibles.</p>

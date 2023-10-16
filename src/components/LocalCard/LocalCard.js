@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./LocalCard.css";
 import apiServiceInstance from "../../connect/apiService";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useAuth } from "../../connect/AuthContext/AuthContext";
 // import { useDateContext } from "../DateContext/DateContext";
 
@@ -52,7 +52,8 @@ const LocalCard = ({ localInfo }) => {
   const handleSave = async () => {
     try {
       if (isEditing) {
-        const response = await apiServiceInstance.updateLocals(localInfo._id, editedFields);
+        // const response = await apiServiceInstance.updateLocals(localInfo._id, editedFields);
+        await apiServiceInstance.updateLocals(localInfo._id, editedFields);
         setIsEditing(false);
         window.location.reload();
       }

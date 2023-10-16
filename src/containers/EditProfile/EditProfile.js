@@ -7,22 +7,19 @@ const EditProfile = ({ userData, onSave }) => {
   const [usersName, setUsersName] = useState(name);
   const [email, setEmail] = useState(initialEmail);
   const [age, setAge] = useState(initialAge);
-  const [profileImage, setProfileImage] = useState(initialProfileImage);
   const [newProfileImage, setNewProfileImage] = useState(null);
 
+  // const handleImageChange = (e) => {
+  //   const file = e.target.files[0];
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        setProfileImage(e.target.result);
-        setNewProfileImage(file);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+  //   if (file) {
+  //     const reader = new FileReader();
+  //     reader.onload = (e) => {
+  //       setNewProfileImage(file);
+  //     };
+  //     reader.readAsDataURL(file);
+  //   }
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,7 +28,7 @@ const EditProfile = ({ userData, onSave }) => {
       usersName,
       email,
       age,
-      profileImage: newProfileImage || initialProfileImage,
+      avatarImg: newProfileImage || initialProfileImage,
     };
     try {
       await onSave(updateUserFields);
@@ -46,7 +43,7 @@ const EditProfile = ({ userData, onSave }) => {
       <form onSubmit={handleSubmit}>
         <div className="form-group-edit-box">
           <label>Nombre:</label>
-          <input type="text" value={name} onChange={(e) => setUsersName(e.target.value)} />
+          <input type="text" value={usersName} onChange={(e) => setUsersName(e.target.value)} />
           <div className="form-group">
             <label>Correo Electrónico:</label>
             <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
@@ -57,11 +54,11 @@ const EditProfile = ({ userData, onSave }) => {
           </div>
         </div>
         <div className="form-group">
-          {/* <label>Foto de Perfil:</label>
-          <input type="file" accept="image/*" onChange={handleImageChange} /> */}
-          {profileImage && (
+          <label>Foto de Perfil:</label>
+          {/* <input type="file" accept="image/*" onChange={handleImageChange} /> */}
+          {newProfileImage && (
             <img
-              src={profileImage}
+              src={newProfileImage}
               alt="Preview"
               style={{ maxWidth: '200px', maxHeight: '200px', marginTop: '10px' }}
             />
